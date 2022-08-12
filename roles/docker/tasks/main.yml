@@ -15,9 +15,9 @@
       - docker-ce-cli
       - containerd.io
 
-- name: Add deploy user to docker group
+- name: Add user user to docker group
   become: yes
-  command: usermod -aG docker ubuntu
+  command: usermod -aG docker $USER
 
 - name: Install Docker Compose
   get_url:

@@ -14,7 +14,7 @@ sudo apt install ansible make unzip git
 2. Clone this repository on your wsl
 
 ```bash
-git clone URL
+git clone https://github.com/phucngodev/wsl-docker
 ```
 
 
