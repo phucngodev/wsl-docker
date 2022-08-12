@@ -1,0 +1,4 @@
+---
+npm_modules:
+  - pyright
+  - sql-language-server

@@ -1,0 +1,19 @@
+---
+- name: Get nodejs installer script
+  get_url:
+    url: https://deb.nodesource.com/setup_16.x
+    dest: /tmp/setup_16.sh
+
+- name: Run node setup script
+  command: bash /tmp/setup_16.sh
+
+- name: Remove node setup script
+  file:
+    path: /tmp/setup_16.sh
+    state: absent
+
+- name: Install node 16
+  apt:
+    name: nodejs
+    state: latest
+

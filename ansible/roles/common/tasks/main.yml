@@ -1,0 +1,41 @@
+---
+- name: Install common softwares
+  apt:
+    update_cache: yes
+    pkg:
+      - git
+      - curl
+      - unzip
+      - apt-transport-https
+      - ca-certificates
+      - software-properties-common
+      - python3
+      - python3-pip
+      - gcc
+      - g++
+      - tmux
+      - htop
+      - ripgrep
+      - ctags
+      - jq
+      - fontconfig
+      - daemonize
+
+- name: Setup and config systemd
+  copy:
+    src: 00-wsl2-systemd.sh
+    dest: /etc/profile.d/00-wsl2-systemd.sh
+
+- name: Setup network DNS
+  copy:
+    src: resolved.conf
+    dest: /etc/systemd/resolved.conf
+
+- name: Restart systemd-resolved
+  shell: |
+    systemctl restart systemd-resolved
+
+- name: Forward localhost to the default interface
+  shell: |
+    echo 'net.ipv4.conf.all.route_localnet = 1' | sudo tee -a /etc/sysctl.conf
+    sudo sysctl -p /etc/sysctl.conf

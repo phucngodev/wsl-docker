@@ -1,0 +1,13 @@
+- hosts: "{{ target_hosts }}"
+  become: yes
+
+  roles:
+    - common
+    - nodejs
+    - golang
+    - docker
+    - fabric
+    - awscli
+    - codedeploy
+    - fabric-network
+

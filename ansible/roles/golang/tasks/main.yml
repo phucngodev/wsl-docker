@@ -1,0 +1,10 @@
+---
+- name: Add Golang repo
+  apt_repository:
+    repo: 'ppa:longsleep/golang-backports'
+
+- name: Install golang
+  apt:
+    pkg:
+      - golang
+
